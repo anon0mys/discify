@@ -28,6 +28,7 @@ gem 'jwt'
 
 # Web requesets and parsing
 gem 'faraday'
+gem 'watir'
 gem 'nokogiri'
 
 # Use pagy for pagination
