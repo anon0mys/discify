@@ -18,9 +18,10 @@ ActiveRecord::Schema.define(version: 2022_02_18_024400) do
   create_table "courses", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "short_location"
+    t.string "city"
+    t.string "state"
     t.string "location"
-    t.string "rating"
+    t.float "rating"
     t.integer "holes"
     t.string "availability"
     t.string "tees"
@@ -45,8 +46,7 @@ ActiveRecord::Schema.define(version: 2022_02_18_024400) do
   create_table "layouts", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.integer "holes"
-    t.integer "par"
+    t.integer "total_par"
     t.integer "total_distance"
     t.bigint "course_id"
     t.datetime "created_at", precision: 6, null: false

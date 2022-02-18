@@ -3,8 +3,7 @@ class CreateLayouts < ActiveRecord::Migration[6.1]
     create_table :layouts do |t|
       t.string :name
       t.string :description
-      t.integer :holes
-      t.integer :par
+      t.integer :total_par
       t.integer :total_distance
       t.references :course
 

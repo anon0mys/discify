@@ -3,9 +3,10 @@ class CreateCourses < ActiveRecord::Migration[6.1]
     create_table :courses do |t|
       t.string :name
       t.text :description
-      t.string :short_location
+      t.string :city
+      t.string :state
       t.string :location
-      t.string :rating
+      t.float :rating
       t.integer :holes
       t.string :availability
       t.string :tees
