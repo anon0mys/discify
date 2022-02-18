@@ -1,7 +1,12 @@
 class Api::V1::CoursesController < ApiController
   def index
     @courses = Course.filter(filtering_params)
-    render json: {courses: @courses}
+    render json: @courses, include: ''
+  end
+
+  def show
+    @course = Course.find(params[:id])
+    render json: @course, include: '**'
   end
 
   private

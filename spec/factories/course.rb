@@ -13,6 +13,13 @@ FactoryBot.define do
     property { 'Public Park' }
     services { 'Dogs Allowed, Restrooms Available' }
     established { '2013' }
+
+    factory :full_course do
+      after :create do |course|
+        create :eighteen_hole_layout, course: course
+        create :nine_hole_layout, course: course
+      end
+    end
   end
 end
 

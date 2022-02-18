@@ -33,6 +33,9 @@ gem 'nokogiri'
 # Use pagy for pagination
 gem 'pagy', '~> 5.10'
 
+# Use serializers
+gem 'active_model_serializers', '~> 0.10.0'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
