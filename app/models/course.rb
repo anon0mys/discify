@@ -3,6 +3,7 @@ class Course < ApplicationRecord
 
   validates_presence_of :name, :city, :state, :rating, :holes
   has_many :layouts
+  accepts_nested_attributes_for :layouts
 
   scope :filter_by_name, -> (name) { where 'name ILIKE ?', "%#{name.downcase}%" }
   scope :filter_by_rating_min, -> (rating) { where 'rating >= ?', rating }
