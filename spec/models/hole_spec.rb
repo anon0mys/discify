@@ -9,5 +9,6 @@ describe Hole, type: :model do
 
   context 'relationships' do
     it { should belong_to :layout }
+    it { should have_many :scores }
   end
 end

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :courses, only: [:index, :show]
       resources :players, only: [:index, :show, :create]
+      resources :rounds, only: [:create]
     end
   end
 end
