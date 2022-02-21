@@ -18,4 +18,17 @@ describe 'POST /api/v1/players' do
       expect(response).to have_http_status(:created)
     end
   end
+
+  context 'with invalid attrs' do
+    before { post api_v1_players_path, params: {player: {bad: 'attr'}} }
+
+    it 'creates a player' do
+      data = JSON.parse(response.body)
+      expect(data['errors']).to eq "Validation failed: Name can't be blank"
+    end
+
+    it 'responds with a 422' do
+      expect(response).to have_http_status(:unprocessable_entity)
+    end
+  end
 end
