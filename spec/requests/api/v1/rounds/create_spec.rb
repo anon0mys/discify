@@ -20,9 +20,8 @@ describe 'POST /api/v1/rounds' do
       expect(round['id']).to eq 1
       expect(round['course_name']).to eq course.name
       expect(round['layout_name']).to eq course.layouts.first.name
-      expect(round['date']).to eq Date.today.strftime('%m/%d/%Y')
+      expect(round['date']).to eq Time.current.strftime('%m/%d/%Y')
       expect(round['holes'].count).to eq course.layouts.first.holes.count
-      require 'pry'; binding.pry()
     end
 
     it 'responds with a 201' do

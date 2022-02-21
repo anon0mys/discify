@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Score, type: :model do
   context 'validations' do
     it { should validate_presence_of :score }
+    it { should validate_presence_of :strokes }
   end
 
   context 'relationships' do

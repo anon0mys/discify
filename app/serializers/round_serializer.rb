@@ -1,7 +1,12 @@
 class RoundSerializer < ActiveModel::Serializer
-  attributes :id, :course_name, :layout_name, :date
+  attributes :id, :course_name, :layout_name, :date, :scores
+
   has_many :holes, serializer: HoleSerializer do
     object.layout.holes
+  end
+
+  has_many :scores, serializer: PlayerRoundSerializer do
+    object.player_rounds.order(total_score: :asc)
   end
 
   def course_name

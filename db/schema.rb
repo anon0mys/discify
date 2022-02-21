@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_19_201041) do
+ActiveRecord::Schema.define(version: 2022_02_21_045342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -111,6 +111,7 @@ ActiveRecord::Schema.define(version: 2022_02_19_201041) do
     t.bigint "hole_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "strokes"
     t.index ["hole_id"], name: "index_scores_on_hole_id"
     t.index ["player_round_id"], name: "index_scores_on_player_round_id"
   end
