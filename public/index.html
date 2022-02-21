@@ -340,6 +340,9 @@
                   <li>
                     <a href="#create-a-player" class="toc-h2 toc-link" data-title="Create a Player">Create a Player</a>
                   </li>
+                  <li>
+                    <a href="#delete-a-player" class="toc-h2 toc-link" data-title="Delete a Player">Delete a Player</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -604,9 +607,27 @@
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Name"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h1 id='rounds'>Rounds</h1><h2 id='create-a-round'>Create a Round</h2>
-<p>This endpoint creates a round at a specific course and layout.</p>
+</span></code></pre></div><h2 id='delete-a-player'>Delete a Player</h2>
+<p>This endpoint deletes a player.</p>
 <h3 id='http-request-6'>HTTP Request</h3>
+<p><code>DELETE  https://discify-api.herokuapp.com/api/v1/players/:id</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>number</td>
+<td>The ID of the player to delete</td>
+</tr>
+</tbody></table>
+<h1 id='rounds'>Rounds</h1><h2 id='create-a-round'>Create a Round</h2>
+<p>This endpoint creates a round at a specific course and layout.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
 <p><code>POST  https://discify-api.herokuapp.com/api/v1/rounds</code></p>
 <h3 id='request-body-2'>Request Body</h3>
 <blockquote>
@@ -667,9 +688,9 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='end-a-round'>End a Round</h2>
 <p>This endpoint ends a round. There are two ways to track scores. The <code>player_scores</code> param for the body of this post request can be used to end the round and set final scores for the players. Alternately, there is a per-hole tracking endpoint to track as the game goes on. If per-hole tracking is used, the body is not required for this endpoint. Scores in the body will override calculated scores.</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-8'>HTTP Request</h3>
 <p><code>POST  https://discify-api.herokuapp.com/api/v1/rounds/:id/end_round</code></p>
-<h3 id='url-parameters-3'>URL Parameters</h3>
+<h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -754,9 +775,9 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='score-a-hole'>Score a Hole</h2>
 <p>This endpoint tracks player scores for a single hole.</p>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request-9'>HTTP Request</h3>
 <p><code>POST  https://discify-api.herokuapp.com/api/v1/rounds/:id/score_hole</code></p>
-<h3 id='url-parameters-4'>URL Parameters</h3>
+<h3 id='url-parameters-5'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
