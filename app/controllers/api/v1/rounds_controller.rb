@@ -25,7 +25,7 @@ class Api::V1::RoundsController < ApiController
   end
 
   def player_score_params
-    params.require(:round)
+    params.fetch(:round, {})
           .permit(player_scores: [:player_id, :total_score])
           .to_h
           .symbolize_keys

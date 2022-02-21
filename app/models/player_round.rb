@@ -4,4 +4,8 @@ class PlayerRound < ApplicationRecord
   belongs_to :round
   has_one :layout, through: :round
   has_many :scores
+
+  def score_round
+    self.update!(total_score: scores.sum(:strokes))
+  end
 end

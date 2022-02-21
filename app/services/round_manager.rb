@@ -28,14 +28,18 @@ class RoundManager
   def score_hole(hole_number:, player_scores: [])
     player_scores.map do |player_score|
       player_id, strokes = player_score.values_at('player_id', 'strokes').map(&:to_i)
-      player_round = @round.player_rounds.find_by_player_id(player_id)
-      hole = @round.layout.holes.find_by_hole_number(hole_number.to_i)
+      player_round = @round.player_rounds.find_by!(player_id: player_id)
+      hole = @round.layout.holes.find_by!(hole_number: hole_number.to_i)
       score = strokes - hole.par
       Score.create!(player_round: player_round, hole: hole, strokes: strokes, score: score)
     end
   end
 
   private
+
+  def calculate_round_scores
+    @round.player_rounds.map(&:score_round)
+  end
   
   def create_player_rounds(player_ids)
     player_ids.each do |player_id|
