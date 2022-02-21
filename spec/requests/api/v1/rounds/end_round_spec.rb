@@ -4,13 +4,14 @@ describe 'POST /api/v1/rounds/:id/end_round' do
   let(:course) { create(:full_course) }
   before { create_list(:player, 3) }
 
-  context 'with valid attrs' do
+  context 'with player scores' do
     let(:round) { 
       RoundManager.new.start_round(
       course_id: course.id,
       layout_id: course.layouts.first.id,
       player_ids: Player.all.pluck(:id)
-      ).round }
+      ).round 
+    }
     let(:valid_attrs) {{ 
       round: {
         player_scores: [

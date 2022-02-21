@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 describe 'POST /api/v1/players' do
-  let(:valid_attrs) {{
+  let(:attrs) {{
     player: {name: 'Test'}
   }}
 
   context 'with valid attrs' do
-    before { post api_v1_players_path, params: valid_attrs }
+    before { post api_v1_players_path, params: attrs }
 
     it 'creates a player' do
       player = JSON.parse(response.body)
@@ -22,7 +22,7 @@ describe 'POST /api/v1/players' do
   context 'with invalid attrs' do
     before { post api_v1_players_path, params: {player: {bad: 'attr'}} }
 
-    it 'creates a player' do
+    it 'responds with an errors key' do
       data = JSON.parse(response.body)
       expect(data['errors']).to eq "Validation failed: Name can't be blank"
     end

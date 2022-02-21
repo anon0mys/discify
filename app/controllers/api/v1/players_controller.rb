@@ -14,6 +14,11 @@ class Api::V1::PlayersController < ApiController
     render json: @player, status: :created
   end
 
+  def destroy
+    Player.find(params[:id]).destroy
+    head :accepted
+  end
+
   private
 
   def player_params
