@@ -352,7 +352,7 @@
                     <a href="#end-a-round" class="toc-h2 toc-link" data-title="End a Round">End a Round</a>
                   </li>
                   <li>
-                    <a href="#track-a-hole" class="toc-h2 toc-link" data-title="Track a Hole">Track a Hole</a>
+                    <a href="#score-a-hole" class="toc-h2 toc-link" data-title="Score a Hole">Score a Hole</a>
                   </li>
               </ul>
           </li>
@@ -531,20 +531,6 @@
 <blockquote>
 <p>Example Response:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Name"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><code>GET  https://discify-api.herokuapp.com/api/v1/players</code></p>
-<h2 id='get-a-specific-player'>Get a Specific Player</h2>
-<p>This endpoint retrieves a specific player.</p>
-<h3 id='http-request-4'>HTTP Request</h3>
-<p><code>GET  https://discify-api.herokuapp.com/api/v1/players/:id</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
-<blockquote>
-<p>Example Response:</p>
-</blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -556,6 +542,20 @@
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
+<p><code>GET  https://discify-api.herokuapp.com/api/v1/players</code></p>
+<h2 id='get-a-specific-player'>Get a Specific Player</h2>
+<p>This endpoint retrieves a specific player.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET  https://discify-api.herokuapp.com/api/v1/players/:id</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Name"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -566,11 +566,11 @@
 <tr>
 <td>ID</td>
 <td>number</td>
-<td>The ID of the course to retrieve</td>
+<td>The ID of the player to retrieve</td>
 </tr>
 </tbody></table>
 <h2 id='create-a-player'>Create a Player</h2>
-<p>This endpoint creates a specific.</p>
+<p>This endpoint creates a player.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
 <p><code>POST  https://discify-api.herokuapp.com/api/v1/players</code></p>
 <h3 id='request-body'>Request Body</h3>
@@ -743,18 +743,16 @@
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"player_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="nl">"total_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">52</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">-2</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ranking"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">-2</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"player_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
       </span><span class="nl">"total_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">56</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ranking"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+      </span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='track-a-hole'>Track a Hole</h2>
+</span></code></pre></div><h2 id='score-a-hole'>Score a Hole</h2>
 <p>This endpoint tracks player scores for a single hole.</p>
 <h3 id='http-request-8'>HTTP Request</h3>
 <p><code>POST  https://discify-api.herokuapp.com/api/v1/rounds/:id/score_hole</code></p>
@@ -782,11 +780,11 @@
     </span><span class="nl">"player_scores"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"player_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+        </span><span class="nl">"strokes"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"player_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+        </span><span class="nl">"strokes"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -810,7 +808,7 @@
 <td>player_scores</td>
 <td></td>
 <td>array[player_scores]</td>
-<td>The list of final scores for each player</td>
+<td>A list of scores for each player on this hole</td>
 </tr>
 <tr>
 <td></td>
@@ -820,9 +818,9 @@
 </tr>
 <tr>
 <td></td>
-<td>total_score</td>
+<td>strokes</td>
 <td>number</td>
-<td>A Player&#39;s score for this hole</td>
+<td>A Player&#39;s count of strokes for this hole</td>
 </tr>
 </tbody></table>
 
@@ -830,18 +828,17 @@
 <p>Example Response:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"hole_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="nl">"scores"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"player_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"total_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">52</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">-2</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ranking"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="nl">"strokes"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"player_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"total_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">56</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ranking"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+      </span><span class="nl">"strokes"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
