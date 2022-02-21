@@ -6,6 +6,11 @@ class Api::V1::RoundsController < ApiController
     render json: @round_manager.round, status: :created
   end
 
+  def show
+    @round = Round.find(params[:id])
+    render json: @round
+  end
+
   def end_round
     @round_manager.find_round(params[:round_id]).end_round(player_score_params)
     render json: @round_manager.round

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :courses, only: [:index, :show]
       resources :players, only: [:index, :show, :create, :destroy]
-      resources :rounds, only: [:create] do
+      resources :rounds, only: [:create, :show] do
         post 'end_round', to: 'rounds#end_round'
         post 'score_hole', to: 'rounds#score_hole'
       end

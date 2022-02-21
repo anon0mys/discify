@@ -352,6 +352,9 @@
                     <a href="#create-a-round" class="toc-h2 toc-link" data-title="Create a Round">Create a Round</a>
                   </li>
                   <li>
+                    <a href="#get-a-specific-round" class="toc-h2 toc-link" data-title="Get a Specific Round">Get a Specific Round</a>
+                  </li>
+                  <li>
                     <a href="#end-a-round" class="toc-h2 toc-link" data-title="End a Round">End a Round</a>
                   </li>
                   <li>
@@ -686,11 +689,51 @@
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='end-a-round'>End a Round</h2>
-<p>This endpoint ends a round. There are two ways to track scores. The <code>player_scores</code> param for the body of this post request can be used to end the round and set final scores for the players. Alternately, there is a per-hole tracking endpoint to track as the game goes on. If per-hole tracking is used, the body is not required for this endpoint. Scores in the body will override calculated scores.</p>
+</span></code></pre></div><h2 id='get-a-specific-round'>Get a Specific Round</h2>
+<p>This endpoint retrieves a specific round.</p>
 <h3 id='http-request-8'>HTTP Request</h3>
-<p><code>POST  https://discify-api.herokuapp.com/api/v1/rounds/:id/end_round</code></p>
+<p><code>GET  https://discify-api.herokuapp.com/api/v1/rounds/:id</code></p>
 <h3 id='url-parameters-4'>URL Parameters</h3>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"course_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Name"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"layout_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Main"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/20/2022"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"holes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"hole_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"par"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"distance"</span><span class="p">:</span><span class="w"> </span><span class="mi">575</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"hole_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"par"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"distance"</span><span class="p">:</span><span class="w"> </span><span class="mi">615</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>number</td>
+<td>The ID of the round to retrieve</td>
+</tr>
+</tbody></table>
+<h2 id='end-a-round'>End a Round</h2>
+<p>This endpoint ends a round. There are two ways to track scores. The <code>player_scores</code> param for the body of this post request can be used to end the round and set final scores for the players. Alternately, there is a per-hole tracking endpoint to track as the game goes on. If per-hole tracking is used, the body is not required for this endpoint. Scores in the body will override calculated scores.</p>
+<h3 id='http-request-9'>HTTP Request</h3>
+<p><code>POST  https://discify-api.herokuapp.com/api/v1/rounds/:id/end_round</code></p>
+<h3 id='url-parameters-5'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -775,9 +818,9 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='score-a-hole'>Score a Hole</h2>
 <p>This endpoint tracks player scores for a single hole.</p>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>POST  https://discify-api.herokuapp.com/api/v1/rounds/:id/score_hole</code></p>
-<h3 id='url-parameters-5'>URL Parameters</h3>
+<h3 id='url-parameters-6'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
