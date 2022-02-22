@@ -8,4 +8,8 @@ class PlayerRound < ApplicationRecord
   def score_round
     self.update!(total_score: scores.sum(:strokes))
   end
+
+  def score
+    total_score - layout.total_par
+  end
 end
