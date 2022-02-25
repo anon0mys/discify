@@ -10,6 +10,6 @@ class PlayerRound < ApplicationRecord
   end
 
   def score
-    total_score - layout.total_par
+    total_score - layout.holes.sum(:par)
   end
 end
