@@ -2,10 +2,11 @@ require 'rails_helper'
 
 describe 'GET /api/v1/courses' do
   context 'with no filter' do
+    before { create_list(:full_course, 3) }
     before { create_list(:course, 3) }
     before { get api_v1_courses_path }
 
-    it 'should return a list of courses' do
+    it 'should return a list of courses excluding courses without active layouts' do
       data = JSON.parse(response.body)
       expect(data.count).to eq 3
     end
@@ -28,15 +29,15 @@ describe 'GET /api/v1/courses' do
       expect(course['property']).to eq 'Public Park'
       expect(course['services']).to eq 'Dogs Allowed, Restrooms Available'
       expect(course['established']).to eq '2013'
-      expect(course['layouts']).to be nil
     end
   end
 
   context 'with filters' do
+    before { create_list(:full_course, 3, rating: 3.9) }
     before { create_list(:course, 3, rating: 3.9) }
 
     it 'should fuzzy search by name' do
-      create(:course, name: 'Searchable')
+      create(:full_course, name: 'Searchable')
 
       get api_v1_courses_path + '?name=search'
       data = JSON.parse(response.body)
@@ -45,7 +46,7 @@ describe 'GET /api/v1/courses' do
     end
 
     it 'should fuzzy search by city' do
-      create(:course, city: 'Somewhere Else')
+      create(:full_course, city: 'Somewhere Else')
 
       get api_v1_courses_path + '?city=somewhere'
       data = JSON.parse(response.body)
@@ -54,7 +55,7 @@ describe 'GET /api/v1/courses' do
     end
 
     it 'should search by state' do
-      create(:course, state: 'OR')
+      create(:full_course, state: 'OR')
 
       get api_v1_courses_path + '?state=OR'
       data = JSON.parse(response.body)
@@ -63,7 +64,7 @@ describe 'GET /api/v1/courses' do
     end
 
     it 'should search by minimum rating' do
-      create(:course, rating: 4.5)
+      create(:full_course, rating: 4.5)
 
       get api_v1_courses_path + '?rating_min=4'
       data = JSON.parse(response.body)
@@ -72,7 +73,7 @@ describe 'GET /api/v1/courses' do
     end
 
     it 'should search by minimum holes' do
-      create(:course, holes: 18)
+      create(:full_course, holes: 18)
 
       get api_v1_courses_path + '?holes_min=18'
       data = JSON.parse(response.body)

@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-describe 'GET /api/v1/courses/:id' do
+describe 'GET /api/v1/players/:id' do
   let(:player) { create(:player, name: 'Test') }
   before {
-    create_list(:player_round, 3, player: player, total_score: 57)
+    create_list(:complete_player_round, 3, player: player, total_score: 53)
   }
   before { get api_v1_player_path(player.id) }
 

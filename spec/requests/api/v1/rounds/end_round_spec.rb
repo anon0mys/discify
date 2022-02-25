@@ -15,9 +15,9 @@ describe 'POST /api/v1/rounds/:id/end_round' do
     let(:valid_attrs) {{
       round: {
         player_scores: [
-          {player_id: 1, total_score: 58},
-          {player_id: 2, total_score: 56},
-          {player_id: 3, total_score: 59}
+          {player_id: 1, total_score: 54},
+          {player_id: 2, total_score: 52},
+          {player_id: 3, total_score: 55}
         ]
       }
     }}
@@ -36,9 +36,9 @@ describe 'POST /api/v1/rounds/:id/end_round' do
       round_data = JSON.parse(response.body)
 
       scores = round_data['scores']
-      expect(scores[0]['total_score']).to eq 56
-      expect(scores[1]['total_score']).to eq 58
-      expect(scores[2]['total_score']).to eq 59
+      expect(scores[0]['total_score']).to eq 52
+      expect(scores[1]['total_score']).to eq 54
+      expect(scores[2]['total_score']).to eq 55
     end
 
     it 'should calculate scores' do
@@ -97,7 +97,7 @@ describe 'POST /api/v1/rounds/:id/end_round' do
 
     it 'should calculate scores' do
       rounds = player_rounds.order(total_score: :asc)
-      total_par = round_manager.round.layout.total_par
+      total_par = round_manager.round.layout.holes.sum(:par)
       round_data = JSON.parse(response.body)
 
       scores = round_data['scores']

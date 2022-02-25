@@ -4,6 +4,7 @@ FactoryBot.define do
     description { 'Test Description' }
     total_par { 58 }
     total_distance { 5437 }
+    active { true }
     association :course
 
     factory :eighteen_hole_layout do

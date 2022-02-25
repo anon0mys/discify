@@ -1,6 +1,6 @@
 class Api::V1::CoursesController < ApiController
   def index
-    @courses = Course.filter(filtering_params)
+    @courses = Course.filter(filtering_params).active
     render json: @courses, include: ''
   end
 

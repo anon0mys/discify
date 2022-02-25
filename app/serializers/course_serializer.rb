@@ -3,5 +3,7 @@ class CourseSerializer < ActiveModel::Serializer
              :state, :location, :rating, :holes, :availability,
              :tees, :targets, :property, :services, :established
 
-  has_many :layouts
+  has_many :layouts do
+    @object.layouts.active
+  end
 end

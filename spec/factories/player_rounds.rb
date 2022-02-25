@@ -4,5 +4,12 @@ FactoryBot.define do
 
     association :player
     association :round
+
+    factory :complete_player_round do
+      after :create do |player_round|
+        player_round.round = create(:complete_round)
+        player_round.save!
+      end
+    end
   end
 end

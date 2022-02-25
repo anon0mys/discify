@@ -6,7 +6,7 @@ describe 'GET /api/v1/players' do
     before { create_list(:player, 2) }
     before {
       Player.all.each do |player|
-        create_list(:player_round, 3, player: player, total_score: 57)
+        create_list(:complete_player_round, 3, player: player, total_score: 53)
       end
     }
     before { get api_v1_players_path }

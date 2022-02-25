@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe 'GET /api/v1/courses/:id' do
   let(:course) { create(:full_course) }
+  before { create(:layout, course: course, active: false) }
   before { get api_v1_course_path(course.id) }
 
   it 'should return a course and its layouts' do
@@ -23,8 +24,14 @@ describe 'GET /api/v1/courses/:id' do
     expect(course['established']).to eq '2013'
 
     layouts = course['layouts']
-    expect(layouts.count).to eq 2
     expect(layouts[0]['holes'].count).to eq 18
     expect(layouts[1]['holes'].count).to eq 9
+  end
+
+  it 'should only return active layouts' do
+    course = JSON.parse(response.body)
+
+    layouts = course['layouts']
+    expect(layouts.count).to eq 2
   end
 end
