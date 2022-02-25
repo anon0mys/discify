@@ -29,6 +29,7 @@ describe 'POST /api/v1/rounds/:id/end_round' do
       expect(round_data['id']).to eq round.id
       expect(round_data['course_name']).to eq course.name
       expect(round_data['layout_name']).to eq course.layouts.first.name
+      expect(round_data['total_par']).to eq course.layouts.first.holes.sum(:par)
       expect(round_data['date']).to eq Time.current.strftime('%m/%d/%Y')
     end
 
@@ -82,6 +83,7 @@ describe 'POST /api/v1/rounds/:id/end_round' do
       expect(round_data['id']).to eq round_manager.round.id
       expect(round_data['course_name']).to eq course.name
       expect(round_data['layout_name']).to eq course.layouts.first.name
+      expect(round_data['total_par']).to eq course.layouts.first.holes.sum(:par)
       expect(round_data['date']).to eq Time.current.strftime('%m/%d/%Y')
     end
 

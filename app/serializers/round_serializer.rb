@@ -1,5 +1,5 @@
 class RoundSerializer < ActiveModel::Serializer
-  attributes :id, :course_name, :layout_name, :date, :scores
+  attributes :id, :course_name, :layout_name, :total_par, :date, :scores
 
   has_many :holes, serializer: HoleSerializer do
     object.layout.holes
@@ -15,6 +15,10 @@ class RoundSerializer < ActiveModel::Serializer
 
   def layout_name
     object.layout.name
+  end
+
+  def total_par
+    object.layout.holes.sum(:par)
   end
 
   def date
