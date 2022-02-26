@@ -16,7 +16,7 @@ class Api::V1::PlayersController < ApiController
 
   def destroy
     Player.find(params[:id]).destroy
-    head :accepted
+    render json: {message: "Player #{params[:id]} deleted"}
   end
 
   private
