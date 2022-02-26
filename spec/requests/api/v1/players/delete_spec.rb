@@ -5,8 +5,8 @@ describe 'DELETE /api/v1/players/:id' do
     let(:player) { create(:player) }
     before { delete api_v1_player_path(player.id) }
 
-    it 'responds with a 202' do
-      expect(response).to have_http_status(:accepted)
+    it 'responds with a 200' do
+      expect(response).to have_http_status(:ok)
     end
   end
 
