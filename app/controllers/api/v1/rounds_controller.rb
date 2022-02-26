@@ -12,7 +12,7 @@ class Api::V1::RoundsController < ApiController
   end
 
   def end_round
-    @round_manager.find_round(params[:round_id]).end_round(player_score_params)
+    @round_manager.find_round(params[:round_id]).end_round()
     render json: @round_manager.round
   end
   
@@ -27,13 +27,6 @@ class Api::V1::RoundsController < ApiController
 
   def create_manager
     @round_manager = RoundManager.new
-  end
-
-  def player_score_params
-    params.fetch(:round, {})
-          .permit(player_scores: [:player_id, :total_score])
-          .to_h
-          .symbolize_keys
   end
 
   def hole_score_params

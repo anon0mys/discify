@@ -10,6 +10,7 @@ class PlayerRound < ApplicationRecord
   end
 
   def score
-    total_score - layout.holes.sum(:par)
+    holes_played = scores.pluck(:hole_id)
+    total_score - layout.holes.where(id: holes_played).sum(:par)
   end
 end

@@ -17,11 +17,7 @@ class RoundManager
   end
 
   def end_round(player_scores: [])
-    if player_scores.empty?
-      calculate_round_scores
-    else
-      set_round_scores(player_scores)
-    end
+    calculate_round_scores
     self
   end
 
